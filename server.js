@@ -90,8 +90,17 @@ app.use(favicon(__dirname + '/public/img/favicon.ico'))
 //Serve static resources
 app.use(express.static('public'))
 
+app.use( (req, res, next) => {
+    if(req.user){
+        res.locals.user = req.user;
+    }
+    next()
+})
+
+
 //Define Basic routes
 app.use('/auth', require('./components/auth/routes'))
+app.use('/characters', require('./components/characters/routes'));
 app.use('/', require('./components/main/routes'));
 
 //Error 404 handler

@@ -7,5 +7,24 @@
         <span class="navbar-text">
             {{titlebarName}}
         </span>
+        {{!-- User Menu --}}
+        {{#if user}}
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">{{user.username}}</a>
+                </li>
+            </ul>
+        {{else}}
+            <span class="ml-auto">
+                <a href="/auth/login" class="btn btn-outline-primary ml-auto">
+                    Login
+                </a>
+                <a href="/auth/register" class="btn btn-outline-success ml-auto">
+                    Register
+                </a>
+            </span>
+            
+        {{/if}}
+        
     </div>
 </nav>
